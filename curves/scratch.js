@@ -68,13 +68,15 @@ function place_divs()
 }
 
 
-function show_answer( intIdent ) {
+function show_answer( identifier )
+{
 
-    document.getElementById( 'path' + intIdent ).style.display = 'initial';
-    document.getElementById( 'a' + intIdent ).style.display = 'initial';
-    document.getElementById( 'dotStart' + intIdent ).style.display = 'initial';
-    document.getElementById( 'dotEnd' + intIdent ).style.display = 'initial';
+    console.log( "seeing click event" );
 
+    document.getElementById( 'a' + identifier ).style.visibility = 'visible';
+    document.getElementById( 'path' + identifier ).style.visibility = 'visible';
+    document.getElementById( 'dotStart' + identifier ).style.visibility = 'visible';
+    document.getElementById( 'dotEnd' + identifier ).style.visibility = 'visible';
 }
 
 
