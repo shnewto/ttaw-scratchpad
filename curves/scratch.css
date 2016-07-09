@@ -20,12 +20,24 @@ html, body {
 }
 
 .Path {
-    visibility: hidden;
+    /*visibility: hidden;*/
+    display: none;
     stroke: black;
     stroke-width: 5;
+    stroke-dasharray: 15000;
+    stroke-dashoffset: 15000;
+    animation: dash 5s linear forwards;
+
     fill: none;
     opacity: 0.3;
 }
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
 
 .Dot {
     visibility: hidden;

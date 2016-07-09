@@ -67,16 +67,32 @@ function place_divs()
 
 }
 
+var counter = 0;
 
 function show_answer( identifier )
 {
 
+    console.log( ++counter );
+
     console.log( "seeing click event" );
 
-    document.getElementById( 'a' + identifier ).style.visibility = 'visible';
-    document.getElementById( 'path' + identifier ).style.visibility = 'visible';
-    document.getElementById( 'dotStart' + identifier ).style.visibility = 'visible';
-    document.getElementById( 'dotEnd' + identifier ).style.visibility = 'visible';
+    if( counter % 2 )
+    {
+        document.getElementById( 'a' + identifier ).style.visibility = 'visible';
+        // document.getElementById( 'path' + identifier ).style.visibility = 'visible';
+        document.getElementById( 'path' + identifier ).style.display = 'block';
+
+        document.getElementById( 'dotStart' + identifier ).style.visibility = 'visible';
+        document.getElementById( 'dotEnd' + identifier ).style.visibility = 'visible';
+    }
+    else
+    {
+        document.getElementById( 'a' + identifier ).style.visibility = 'hidden';
+        // document.getElementById( 'path' + identifier ).style.visibility = 'hidden';
+        document.getElementById( 'path' + identifier ).style.display = 'none';
+        document.getElementById( 'dotStart' + identifier ).style.visibility = 'hidden';
+        document.getElementById( 'dotEnd' + identifier ).style.visibility = 'hidden';
+    }
 }
 
 
