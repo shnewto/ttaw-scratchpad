@@ -27,6 +27,56 @@ function drawPath( QOffsets, AOffsets, path, dotStart, dotEnd ) {
     dotEnd.setAttribute( "cy", y2 );
 }
 
+function intertwine() {
+
+    var scale = (document.body.clientHeight / 6);
+
+    var Q1Offsets = document.getElementById( 'q1' ).getBoundingClientRect();
+    var A2Offsets = document.getElementById( 'a2' ).getBoundingClientRect();
+
+
+    // get (top, left) coordinates for the two elements
+    var x1 = Q1Offsets.left;
+    var y1 = Q1Offsets.top;
+
+    var x2 = A2Offsets.left;
+    var y2 = A2Offsets.top;
+
+
+    var m1 = (( x1 + x2 ) / 2) - scale;
+    var m2 = (( y1 + y2 ) / 2) - scale;
+    var m3 = (( x1 + x2 ) / 2) + scale;
+    var m4 = (( y1 + y2 ) / 2) + scale;
+
+    var path3 = document.getElementById( 'path3' );
+
+    path3.setAttribute(
+        "d",
+        "M "  + x1 + " " + y1 + " q " +  m1 + " " + m2 + ", " + m3 + " " + m4 + " T " + x2 + " " + y2  );
+
+    var Q2Offsets = document.getElementById( 'q2' ).getBoundingClientRect();
+    var A1Offsets = document.getElementById( 'a1' ).getBoundingClientRect();
+
+    // // get (top, left) coordinates for the two elements
+    var x3 = Q2Offsets.left;
+    var y3 = Q2Offsets.top;
+    //
+    var x4 = A1Offsets.left;
+    var y4 = A1Offsets.top;
+    //
+    var m5 = (( x3 + x4 ) / 2) - scale;
+    var m6 = (( y3 + y4 ) / 2) - scale;
+    var m7 = (( x3 + x4 ) / 2) + scale;
+    var m8 = (( y3 + y4 ) / 2) + scale;
+
+    var path4 = document.getElementById( 'path4' );
+
+    path4.setAttribute(
+        "d",
+        "M "  + x3 + " " + y3 + " q " +  m5 + " " + m6 + ", " + m7 + " " + m8 + " T " + x4 + " " + y4  );
+
+
+}
 
 function loadPaths()
 {
@@ -42,6 +92,8 @@ function loadPaths()
 
         drawPath( QOffsets, AOffsets, path, dotStart, dotEnd );
     }
+
+    // intertwine();
 }
 
 
@@ -71,17 +123,13 @@ var counter = 0;
 
 function show_answer( identifier )
 {
-
-    console.log( ++counter );
-
-    console.log( "seeing click event" );
-
+    ++counter;
+    
     if( counter % 2 )
     {
         document.getElementById( 'a' + identifier ).style.visibility = 'visible';
         // document.getElementById( 'path' + identifier ).style.visibility = 'visible';
         document.getElementById( 'path' + identifier ).style.display = 'block';
-
         document.getElementById( 'dotStart' + identifier ).style.visibility = 'visible';
         document.getElementById( 'dotEnd' + identifier ).style.visibility = 'visible';
     }
