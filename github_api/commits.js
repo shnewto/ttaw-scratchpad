@@ -36,15 +36,18 @@ function printCommitMessages() {
             var commits = response.payload.commits;
             for( var commit of commits )
             {
-                console.log( commit.sha.substr(0,9), ': ', commit.message );
+                    document.getElementById( 'container' ).innerHTML +=
+                        '<br>' + '{' + '<br>' + commit.author.name + ': ' +
+                        '<br>' + commit.message + '<br>' + '}' + '<br>';
             }
         }
     }
+
 }
 
 var request = new XMLHttpRequest();
 request.onload = printCommitMessages;
-request.open('get', 'https://api.github.com/repos/CrockAgile/C-Programming-Language/events', true)
+request.open('get', 'https://api.github.com/repos/snewt/symbolic-regression-c/events', true)
 request.send()
 
 
