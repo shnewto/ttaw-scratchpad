@@ -38,12 +38,11 @@ function parseURL()
 {
     var urlResponse = JSON.parse( this.responseText );
     document.getElementById( 'container' ).innerHTML +=
-        '<br>' + '{' + '<br>' +
+        '<br>' +
         '<a href=' +  urlResponse.html_url  + '>' +
-        urlResponse.sha.substr(0,9) +
+        urlResponse.sha.substr(0,4) +
         '</a>' +
-        '<br>' + urlResponse.commit.message + '<br>' +
-        '}' + '<br>';
+        ' - ' + urlResponse.commit.message + '<br>';
 
     console.log( 'GET: ', urlResponse.html_url );
 };
