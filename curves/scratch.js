@@ -121,11 +121,11 @@ function place_divs()
 
 var counter = 0;
 
-function show_answer( identifier )
+function show_answer( identifier, is_visible=counter )
 {
     ++counter;
     
-    if( counter % 2 )
+    if( is_visible % 2 )
     {
         document.getElementById( 'a' + identifier ).style.visibility = 'visible';
         // document.getElementById( 'path' + identifier ).style.visibility = 'visible';
@@ -145,8 +145,49 @@ function show_answer( identifier )
 
 
 window.onload = function() {
+
     place_divs();
     loadPaths();
+
+    switch( window.location.hash )
+    {
+        case '#1' :
+        {
+            counter = 0;
+            show_answer( 1, 1 );
+            counter = 1;
+            show_answer( 2, 0 );
+            console.log( "state 1" );
+            break;
+        }
+        case '#2' :
+        {
+            counter = 1;
+            show_answer( 1, 1 );
+            counter = 0;
+            show_answer( 2, 0 );
+            console.log( "state 2" );
+            break;
+        }
+        case '#3' :
+        {
+            counter = 0;
+            show_answer( 1, 1 );
+            counter = 0;
+            show_answer( 2, 1 );
+            console.log( "state 2" );
+            break;
+        }
+        default :
+        {
+            counter = 1;
+            show_answer( 1, 0 );
+            counter = 1;
+            show_answer( 2, 0 );
+            console.log( "default" );
+        }
+    }
+
 };
 
 
